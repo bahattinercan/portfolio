@@ -526,8 +526,10 @@ section {
 .work img {
   display: block;
   width: 100%;
+  /* height: auto olmadan <img height="675"> niteliği CSS yüksekliği olarak
+     kalır, iki boyut da belirlenmiş olur ve aspect-ratio yok sayılır. */
+  height: auto;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
   border-bottom: 1px solid var(--line-2);
   background: var(--surface-2);
 }
