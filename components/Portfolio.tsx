@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import HeroArt from "./HeroArt";
+import Portrait from "./Portrait";
 import {
   t,
   type Lang,
@@ -165,20 +165,6 @@ export default function Portfolio() {
               <p className="avail">
                 <span className="dot" /> {t(lang, ui.availability)}
               </p>
-              <div className="socials">
-                <a href={profile.links.github} aria-label="GitHub">
-                  {Icon.github}
-                </a>
-                <a href={profile.links.linkedin} aria-label="LinkedIn">
-                  {Icon.linkedin}
-                </a>
-                <a href={`mailto:${profile.email}`} aria-label="E-posta">
-                  {Icon.mail}
-                </a>
-                <a href={cvHref} aria-label={t(lang, ui.cta.cv)}>
-                  {Icon.download}
-                </a>
-              </div>
               <div className="actions">
                 <a className="btn btn-primary" href="#iletisim">
                   {t(lang, ui.cta.contact)}
@@ -186,10 +172,25 @@ export default function Portfolio() {
                 <a className="btn" href={cvHref}>
                   {Icon.download} {t(lang, ui.cta.cv)}
                 </a>
+                <span className="actions-sep" aria-hidden />
+                <span className="socials">
+                  <a href={profile.links.github} aria-label="GitHub">
+                    {Icon.github}
+                  </a>
+                  <a href={profile.links.linkedin} aria-label="LinkedIn">
+                    {Icon.linkedin}
+                  </a>
+                  <a href={`mailto:${profile.email}`} aria-label="E-posta">
+                    {Icon.mail}
+                  </a>
+                  <a href={cvHref} aria-label={t(lang, ui.cta.cv)}>
+                    {Icon.download}
+                  </a>
+                </span>
               </div>
             </div>
             <div className="reveal">
-              <HeroArt lang={lang} />
+              <Portrait lang={lang} />
             </div>
           </div>
         </section>

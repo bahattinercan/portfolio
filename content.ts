@@ -48,8 +48,8 @@ export const ui = {
 export const hero = {
   title: { tr: "Bahattin Ercan", en: "Bahattin Ercan" },
   subtitle: {
-    tr: "Computer Engineer · Backend & Full Stack",
-    en: "Computer Engineer · Backend & Full Stack",
+    tr: "Backend & Full Stack · Django / DRF · Node.js · Flutter",
+    en: "Backend & Full Stack · Django / DRF · Node.js · Flutter",
   },
   lead: [
     {
@@ -348,32 +348,32 @@ export const technologies: { group: L; items: string[] }[] = [
 export const rules: { title: L; body: L }[] = [
   {
     title: {
-      tr: "Kritik mantığı teste bağlıyorum",
-      en: "I lock critical logic with tests",
+      tr: "Testi çöken yere değil, sessizce yanlış yapan yere yazıyorum",
+      en: "I write tests where code fails silently, not where it crashes",
     },
     body: {
-      tr: "Uygulamayı çökertmeyen ama yanlış sonuç üreten yerler: tahsilat hesabı, üretim aşaması geçişleri, yetkilendirme, skorlama. Müşteri Sipariş Takip'te 725, Güzellik Salonu'nda 535, Taskbar Hero'da 101 test.",
-      en: "The parts that do not crash the app but produce wrong answers: payment calculations, production stage transitions, authorization, scoring. 725 tests in order tracking, 535 in the salon platform, 101 in Taskbar Hero.",
+      tr: "Uygulama ayakta kalır ama sonuç yanlış olur: tahsilat hesabı, üretim aşaması geçişleri, yetkilendirme, skorlama. Teste öncelik verdiğim yer tam olarak burası. Müşteri Sipariş Takip'te 725, Güzellik Salonu'nda 535, Taskbar Hero'da 101 test.",
+      en: "The app stays up but the answer is wrong: payment calculations, production stage transitions, authorization, scoring. That is exactly where I put the tests. 725 in order tracking, 535 in the salon platform, 101 in Taskbar Hero.",
     },
   },
   {
     title: {
-      tr: "Kararlar kodun yanında duruyor",
-      en: "Decisions live next to the code",
+      tr: "Kararları kafamda değil repoda bırakıyorum",
+      en: "I leave decisions in the repo, not in my head",
     },
     body: {
-      tr: "Her projede mimari, kısıtlar ve neyi yapmamaya karar verdiğim yazılı. Yeni gelen biri soru sormak zorunda kalmıyor; repoyu açan aynı sonuca varıyor.",
-      en: "Architecture, constraints and what I decided not to do are written down in every project. Nobody has to ask; anyone opening the repo reaches the same conclusion.",
+      tr: "Mimari, kısıtlar ve neyi yapmamaya karar verdiğim yazılı. İşi devralan kişi soru sormak zorunda kalmıyor; repoyu açan aynı sonuca varıyor.",
+      en: "Architecture, constraints and what I decided not to do are written down. Whoever takes over does not have to ask; anyone opening the repo reaches the same conclusion.",
     },
   },
   {
     title: {
-      tr: "Demo veri ile gerçek veri karışmıyor",
-      en: "Demo data never touches real data",
+      tr: "Uydurma veri canlıya çıkamıyor",
+      en: "Synthetic data cannot reach production",
     },
     body: {
-      tr: "Geliştirme sentetik veriyle yapılıyor ve üretimde varsayılan şifreyle seed çalıştırmak kodla engelli; \"demo kullanıcıyla canlıya çıkmak\" hatası yapısal olarak imkânsız.",
-      en: "Development uses synthetic data, and seeding production with default passwords is blocked in code, so shipping with a demo user is structurally impossible.",
+      tr: "Geliştirme sentetik veriyle yapılıyor, üretimde varsayılan şifreyle seed çalıştırmak kodla engelli. Kuralı yazmakla kalmıyorum, koda gömüyorum.",
+      en: "Development runs on fake data, and seeding production with the default password is blocked in code. I do not just write the rule down, I put it in the code.",
     },
   },
 ];

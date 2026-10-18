@@ -200,7 +200,8 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 18px;
+  margin-top: 20px;
+  margin-bottom: 0;
   font-size: 13.5px;
   color: var(--muted);
 }
@@ -217,8 +218,9 @@ a {
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
-  margin-top: 30px;
+  margin-top: 26px;
 }
 
 .btn {
@@ -253,17 +255,23 @@ a {
 }
 
 .socials {
-  display: flex;
+  display: inline-flex;
   gap: 10px;
-  margin-top: 26px;
+}
+
+.actions-sep {
+  width: 1px;
+  align-self: stretch;
+  margin: 4px 6px;
+  background: var(--line);
 }
 
 .socials a {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 11px;
   border: 1px solid var(--line);
   background: var(--surface-2);
   color: var(--muted);
@@ -276,38 +284,53 @@ a {
   transform: translateY(-2px);
 }
 
-.hero-art {
+/* ---------- hero portre kartı ---------- */
+.portrait-wrap {
+  position: relative;
+  max-width: 400px;
+  margin-left: auto;
+}
+
+.portrait-glow {
+  position: absolute;
+  inset: -14% -12%;
+  background: radial-gradient(
+    60% 55% at 50% 42%,
+    color-mix(in srgb, var(--accent) 26%, transparent),
+    transparent 72%
+  );
+  filter: blur(18px);
+  z-index: 0;
+}
+
+.portrait {
+  position: relative;
+  z-index: 1;
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.28));
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.45);
 }
 
-.art-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  fill: var(--muted-2);
-  font-family: inherit;
-}
-
-.art-chip {
-  font-size: 13.5px;
-  font-weight: 600;
-  fill: var(--text);
-  font-family: inherit;
-}
-
-.art-code {
-  font-size: 11px;
-  fill: var(--text);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-
-.art-muted {
-  font-size: 11px;
-  fill: var(--muted-2);
-  font-family: inherit;
+.portrait-badge {
+  position: absolute;
+  z-index: 2;
+  bottom: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(8px);
 }
 
 /* ---------------- bölümler ---------------- */
@@ -718,6 +741,10 @@ section {
   justify-content: center;
 }
 
+.contact .actions-sep {
+  display: none;
+}
+
 footer {
   border-top: 1px solid var(--line);
   padding: 28px 0 44px;
@@ -755,10 +782,11 @@ footer {
 @media (max-width: 1000px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 44px;
   }
-  .hero-art {
-    max-width: 520px;
+  .portrait-wrap {
+    max-width: 320px;
+    margin-left: 0;
   }
 }
 
