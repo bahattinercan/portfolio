@@ -84,7 +84,7 @@ export default function Portfolio() {
     localStorage.setItem("pf-lang", lang);
   }, [lang]);
 
-  // Kaydırınca giriş animasyonu — 0 bağımlılık, IntersectionObserver
+  // Kaydırınca giriş animasyonu: 0 bağımlılık, IntersectionObserver
   useEffect(() => {
     const els = rootRef.current?.querySelectorAll<HTMLElement>(".reveal");
     if (!els?.length) return;
@@ -292,7 +292,7 @@ export default function Portfolio() {
                   <a href={w.live ?? w.href}>
                     <Image
                       src={w.shot}
-                      alt={`${w.title} — ${lang === "tr" ? "ekran görüntüsü" : "screenshot"}`}
+                      alt={`${w.title}, ${lang === "tr" ? "ekran görüntüsü" : "screenshot"}`}
                       width={1200}
                       height={675}
                       sizes="(max-width: 720px) 100vw, 540px"

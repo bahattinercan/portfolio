@@ -6,7 +6,7 @@ const labels = {
 };
 
 /**
- * Hero illüstrasyonu — harici görsel yok, tema değişkenleriyle renk değiştirir.
+ * Hero illüstrasyonu: harici görsel yok, tema değişkenleriyle renk değiştirir.
  * Anlattığı şey gerçek mimari: istemciler → API → veritabanı.
  */
 export default function HeroArt({ lang = "tr" }: { lang?: Lang }) {

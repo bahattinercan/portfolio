@@ -3,7 +3,7 @@ import "./globals.css";
 import { profile } from "@/content";
 
 export const metadata: Metadata = {
-  title: `${profile.name} — Computer Engineer · Backend & Full Stack`,
+  title: `${profile.name}, Computer Engineer · Backend & Full Stack`,
   description:
     "Django/DRF, Node.js ve Flutter ile üretim yazılımı geliştiren bilgisayar mühendisi. REST API, JWT ve rol bazlı yetkilendirme, 3D Secure doğrulamalı ödeme akışları, PostgreSQL şema tasarımı, Docker ile dağıtım. 4+ yıl profesyonel deneyim.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   authors: [{ name: profile.name, url: profile.links.github }],
   metadataBase: new URL("https://bahattinercan-portfolio.vercel.app"),
   openGraph: {
-    title: `${profile.name} — Computer Engineer · Backend & Full Stack`,
+    title: `${profile.name}, Computer Engineer · Backend & Full Stack`,
     description:
       "Django/DRF, Node.js ve Flutter ile üretim yazılımı. 4+ yıl profesyonel deneyim.",
     type: "website",
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1280,
         height: 640,
-        alt: `${profile.name} — Computer Engineer · Django/DRF · Node.js · Flutter`,
+        alt: `${profile.name}, Computer Engineer · Django/DRF · Node.js · Flutter`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — Computer Engineer · Backend & Full Stack`,
+    title: `${profile.name}, Computer Engineer · Backend & Full Stack`,
     description:
       "Django/DRF, Node.js ve Flutter ile üretim yazılımı. 4+ yıl profesyonel deneyim.",
     images: ["/og.png"],
