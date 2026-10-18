@@ -1,6 +1,13 @@
-export const site = {
+export type Lang = "tr" | "en";
+
+/** İki dilli metin. Bileşenler `t(lang, field)` ile okur. */
+export type L = { tr: string; en: string };
+
+export const t = (lang: Lang, v: L) => (lang === "tr" ? v.tr : v.en);
+
+export const profile = {
   name: "Bahattin Ercan",
-  role: "Bilgisayar Mühendisi",
+  role: "Computer Engineer",
   location: "Kütahya, Türkiye",
   email: "bahattin.ercan.43@gmail.com",
   links: {
@@ -8,29 +15,144 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/bahattin-ercan",
     caseStudies: "https://github.com/bahattinercan/case-studies",
   },
+  cv: {
+    tr: "/cv/Bahattin-Ercan-CV-TR.pdf",
+    en: "/cv/Bahattin-Ercan-CV-EN.pdf",
+  },
 };
 
-export const pillars = [
+export const ui = {
+  nav: {
+    experience: { tr: "Deneyim", en: "Experience" },
+    skills: { tr: "Yetenekler", en: "Skills" },
+    work: { tr: "İşler", en: "Work" },
+    cases: { tr: "Vaka çalışmaları", en: "Case studies" },
+    education: { tr: "Eğitim", en: "Education" },
+    contact: { tr: "İletişim", en: "Contact" },
+  },
+  cta: {
+    contact: { tr: "İletişime geç", en: "Contact me" },
+    cv: { tr: "CV indir", en: "Download CV" },
+    cvOther: { tr: "CV (İngilizce)", en: "CV (Turkish)" },
+  },
+  availability: {
+    tr: "Yurt dışı remote ve Türkiye'de yerinde çalışmaya açık · hemen başlayabilirim",
+    en: "Open to remote worldwide and onsite in Türkiye · available immediately",
+  },
+  labels: {
+    language: { tr: "Dil", en: "Language" },
+    theme: { tr: "Tema", en: "Theme" },
+  },
+};
+
+export const hero = {
+  title: { tr: "Bahattin Ercan", en: "Bahattin Ercan" },
+  subtitle: {
+    tr: "Computer Engineer · Backend & Full Stack",
+    en: "Computer Engineer · Backend & Full Stack",
+  },
+  lead: [
+    {
+      tr: "2019'dan beri kod yazıyorum, 4+ yılı profesyonel. Django ve Django REST Framework ile REST API, JWT kimlik doğrulama ve rol bazlı yetkilendirme sistemleri; Node.js/Express ile servis katmanları; Flutter ile tek kod tabanından iOS ve Android uygulamaları geliştiriyorum.",
+      en: "I have been writing code since 2019, with 4+ years of professional experience. I build REST APIs, JWT authentication and role-based authorization with Django and Django REST Framework; service layers with Node.js/Express; and cross-platform iOS/Android apps from a single Flutter codebase.",
+    },
+    {
+      tr: "Günlük işim PostgreSQL şema tasarımı, Sequelize migration'ları, Docker ile dağıtım ve 3D Secure doğrulamalı ödeme akışları. Raspberry Pi üzerinde çalışan IoT cihazları için uzaktan kontrol ve otomasyon sistemleri de kurdum.",
+      en: "My day-to-day work covers PostgreSQL schema design, Sequelize migrations, Docker-based deployment and payment flows with 3D Secure verification. I have also built remote control and automation systems for IoT devices running on Raspberry Pi.",
+    },
+  ] as L[],
+};
+
+export const pillars: { title: L; body: L }[] = [
   {
-    title: "Çok kiracılı iş uygulamaları",
-    body: "Güzellik salonu platformu (API + web admin + iki Flutter uygulaması) ve çok şirketli bakım-onarım yönetim sistemi. İzolasyon sınırı tenant ya da şirket; yetkilendirme rol bazlı ve test edilmiş.",
+    title: { tr: "Backend ve API", en: "Backend & API" },
+    body: {
+      tr: "Django/DRF ile REST API, JWT kimlik doğrulama, rol bazlı yetkilendirme ve WebSocket ile gerçek zamanlı akış. Node.js/Express ile servis katmanları.",
+      en: "REST APIs with Django/DRF, JWT authentication, role-based authorization and real-time flows over WebSocket. Service layers with Node.js/Express.",
+    },
   },
   {
-    title: "Masaüstü ve mobil ürünler",
-    body: "Windows'ta kurulan çevrimdışı Flutter masaüstü uygulamaları, Flutter mobil uygulamalar, Kotlin/Android oyun prototipleri. Kurulum, sürümleme ve yedekleme ürünün parçası.",
+    title: { tr: "Ödeme entegrasyonu", en: "Payment integration" },
+    body: {
+      tr: "Sanal POS bağlantısı, 3D Secure doğrulama akışı, iade ve iptal işlemleri. Para hareketi olduğu için bu tarafta her adım kayıt altında ve testli.",
+      en: "Virtual POS integration, 3D Secure verification flow, refund and void handling. Because money moves here, every step is logged and tested.",
+    },
   },
   {
-    title: "Zamanlanmış veri hatları",
-    body: "Kaynaklardan toplayan, normalize eden, sınıflandıran ve snapshot olarak yayınlayan ingest sistemleri. Kaynak sağlığı raporu ile \"boru hattı sessizce bozuldu mu?\" sorusu cevaplanır.",
+    title: { tr: "Mobil ve masaüstü", en: "Mobile & desktop" },
+    body: {
+      tr: "Flutter ile iOS ve Android yayınlama, Windows masaüstü uygulamaları, React Native. Kurulum, sürümleme ve yedekleme işin parçası.",
+      en: "iOS and Android publishing with Flutter, Windows desktop apps, React Native. Installation, versioning and backup are part of the job.",
+    },
+  },
+  {
+    title: { tr: "Veri ve altyapı", en: "Data & infrastructure" },
+    body: {
+      tr: "PostgreSQL şema tasarımı, Sequelize model ve migration'ları, Docker ile taşınabilir dağıtım, Linux ve Raspberry Pi.",
+      en: "PostgreSQL schema design, Sequelize models and migrations, portable deployment with Docker, Linux and Raspberry Pi.",
+    },
   },
 ];
 
+export const experience: { role: L; scope: L; period: L }[] = [
+  {
+    role: { tr: "Backend & Mobil Geliştirici", en: "Backend & Mobile Developer" },
+    period: { tr: "2026", en: "2026" },
+    scope: {
+      tr: "Django ve DRF ile web platformları, servisler ve REST API'ler. Flutter ile tek kod tabanından iOS/Android yayınlama ve web–mobil istemcilerin backend ile entegrasyonu.",
+      en: "Web platforms, services and REST APIs with Django and DRF. Shipped cross-platform iOS/Android apps from a single Flutter codebase and integrated web/mobile clients with the backend.",
+    },
+  },
+  {
+    role: { tr: "Askerlik hizmeti", en: "Military service" },
+    period: { tr: "2025 – 2026", en: "2025 – 2026" },
+    scope: { tr: "Uzun dönem.", en: "Long-term service." },
+  },
+  {
+    role: { tr: "Full Stack Geliştirici", en: "Full Stack Developer" },
+    period: { tr: "2023 – 2024", en: "2023 – 2024" },
+    scope: {
+      tr: "Flutter ile ölçeklenebilir modüler mimari (Provider, Fluro, GetIt, Dio); Node.js/Express REST API ve JWT + rol bazlı yetkilendirme; PostgreSQL şema tasarımı ve Sequelize migration'ları; Docker ile taşınabilir dağıtım; Google Maps, Firebase, bildirim ve WebSocket entegrasyonları.",
+      en: "Scalable modular architecture in Flutter (Provider, Fluro, GetIt, Dio); a Node.js/Express REST API with JWT and role-based authorization; PostgreSQL schema design and Sequelize migrations; portable deployment with Docker; Google Maps, Firebase, notifications and WebSocket integrations.",
+    },
+  },
+  {
+    role: { tr: "IoT & Mobil Geliştirici", en: "IoT & Mobile Developer" },
+    period: { tr: "2022 – 2023", en: "2022 – 2023" },
+    scope: {
+      tr: "Raspberry Pi, Node.js ve Flutter ile hava iyileştirme cihazına anlık uzaktan kontrol ve otomasyon. Canlı veri takibi, güvenli haberleşme ve rol/izin yöneten admin mimarisi (mobil + web panelleri).",
+      en: "Real-time remote control and automation for an air treatment device using Raspberry Pi, Node.js and Flutter. Live data tracking, a secure communication layer, and an admin architecture for roles and permissions (mobile + web panels).",
+    },
+  },
+  {
+    role: { tr: "Unity / C# Oyun Geliştirici", en: "Unity / C# Game Developer" },
+    period: { tr: "2022", en: "2022" },
+    scope: {
+      tr: "Hypercasual mobil oyunlar: level tasarımı, oyun mekaniği, kontrol ve fizik sistemleri. AdMob ve Unity Ads monetizasyonu; CPI testleri ve retention analizi.",
+      en: "Hypercasual mobile games: level design, game mechanics, control and physics systems. AdMob and Unity Ads monetisation; CPI testing and retention analysis.",
+    },
+  },
+  {
+    role: { tr: "Yazılım Stajyeri", en: "Software Intern" },
+    period: { tr: "2021", en: "2021" },
+    scope: {
+      tr: "PHP, Angular ve Node.js ile kurumsal projelerde geliştirme; frontend ve backend tarafında tam geliştirme döngüsü.",
+      en: "Contributed to corporate projects with PHP, Angular and Node.js; experienced the full development cycle across frontend and backend.",
+    },
+  },
+];
+
+export const experienceNote: L = {
+  tr: "İşveren adları kamuya açık profilde paylaşılmıyor; süreçte ve CV'de belirtiliyor.",
+  en: "Employer names are not listed on the public profile; they are shared in the CV and during the process.",
+};
+
 type Work = {
   title: string;
-  kind: string;
+  kind: L;
   shot: string;
-  body: string;
-  metric?: string;
+  body: L;
+  metric: L;
   stack: string[];
   href: string;
   live?: string;
@@ -39,140 +161,252 @@ type Work = {
 export const work: Work[] = [
   {
     title: "OpenWeight Radar",
-    kind: "Web · veri hattı",
+    kind: { tr: "Web · veri hattı", en: "Web · data pipeline" },
     shot: "/work/openweight-radar.webp",
-    body: "Yerelde çalıştırılabilir açık ağırlıklı AI modellerini kategori sekmeleriyle takip eden, haber akışı zamanlanmış olarak güncellenen izleme sitesi.",
-    metric:
-      "Sınıflandırma mantığı 40 fixture'lık regresyon kapısıyla korunuyor; kaynak sağlığı ayrı komutla raporlanıyor.",
+    body: {
+      tr: "Yerelde çalıştırılabilir açık ağırlıklı AI modellerini kategori sekmeleriyle takip eden, haber akışı zamanlanmış olarak güncellenen izleme sitesi.",
+      en: "A tracking site for locally runnable open-weight AI models, grouped by category, with a news feed that refreshes on a schedule.",
+    },
+    metric: {
+      tr: "Sınıflandırma mantığı 40 fixture'lık regresyon kapısıyla kilitli; kaynak sağlığı ayrı raporlanıyor.",
+      en: "Classification logic is locked by a 40-fixture regression gate; source health is reported separately.",
+    },
     stack: ["Next.js 16", "TypeScript", "Hugging Face", "GitHub Actions"],
     href: "https://github.com/bahattinercan/local-ai-news",
     live: "https://local-ai-news.vercel.app",
   },
   {
     title: "Güzellik Salonu Platformu",
-    kind: "Ürün · 4 uygulama",
+    kind: { tr: "Ürün · 4 uygulama", en: "Product · 4 apps" },
     shot: "/work/beauty-salon.webp",
-    body: "Çok kiracılı salon yönetimi: Express + Sequelize API, Next.js admin paneli, Flutter salon ve müşteri uygulamaları. 535 test.",
-    metric:
-      "Üretimde varsayılan demo şifreleriyle seed çalıştırmayı reddeden koruma; tenant izolasyonu test edilmiş.",
-    stack: ["Express", "Sequelize", "Next.js", "Flutter", "SQLite/PostgreSQL"],
+    body: {
+      tr: "Çok kiracılı salon yönetimi: API, web yönetim paneli ve iki Flutter uygulaması. Tek backend, dört istemci.",
+      en: "Multi-tenant salon management: an API, a web admin panel and two Flutter apps. One backend, four clients.",
+    },
+    metric: {
+      tr: "535 test · kiracı izolasyonu test edilmiş · üretimde varsayılan şifreyle çalışmak kodla engelli.",
+      en: "535 tests · tenant isolation covered by tests · running in production with default passwords is blocked in code.",
+    },
+    stack: ["Express", "Sequelize", "Next.js", "Flutter"],
     href: "https://github.com/bahattinercan/beauty-salon",
   },
   {
     title: "Plague Tracker",
-    kind: "Web · açık kaynak",
+    kind: { tr: "Web · açık kaynak", en: "Web · open source" },
     shot: "/work/plague-tracker.webp",
-    body: "Haber iddialarını kaç bağımsız kaynağın bildirdiğine göre etiketleyen izleme platformu. Sistem hiçbir yerde \"doğrulandı\" demez; yalnızca kimin ne bildirdiğini raporlar.",
-    metric: "Bağımsızlık grupları, çelişkili bilgi etiketi ve kaynak sağlığı takibi.",
+    body: {
+      tr: "Haber iddialarını kaç bağımsız kaynağın bildirdiğine göre etiketleyen izleme platformu. Sistem hiçbir yerde \"doğrulandı\" demez; yalnızca kimin ne bildirdiğini raporlar.",
+      en: "A monitoring platform that labels news claims by how many independent sources report them. The system never says \"verified\"; it only reports who claimed what.",
+    },
+    metric: {
+      tr: "Beş etiket seviyesi, bağımsızlık grupları ve kaynak sağlığı takibi; TR/EN.",
+      en: "Five label levels, independence groups and source-health tracking; TR/EN.",
+    },
     stack: ["Next.js", "TypeScript", "Drizzle ORM", "Vercel"],
     href: "https://github.com/bahattinercan/russia-plague-website",
     live: "https://plague-tracker.vercel.app",
   },
   {
-    title: "Müşteri Sipariş Takip",
-    kind: "Masaüstü · çevrimdışı",
-    shot: "/work/siparis-takip.webp",
-    body: "İmalat atölyesi için sipariş → üretim → tahsilat takibi. Windows masaüstü, tek bilgisayar, veriler yerel SQLite'ta.",
-    metric:
-      "725 test · çok kalemli sipariş, kullanıcı tanımlı üretim aşamaları, kısmi tahsilat, stok ve raporlar.",
-    stack: ["Flutter", "Dart", "SQLite", "Windows"],
-    href: "https://github.com/bahattinercan/case-studies/blob/main/docs/musteri-siparis-takip.md",
-  },
-  {
     title: "Barber Shops",
-    kind: "Mobil · API",
+    kind: { tr: "Mobil · API", en: "Mobile · API" },
     shot: "/work/barber-shops.webp",
-    body: "Berber randevu ve personel yönetimi: Flutter uygulaması ve Node.js/Express REST API'si; müdür, çalışan ve admin rolleri.",
-    metric:
-      "Randevu, dükkan, servis, yorum ve favori akışlarının tamamı rol bazlı yetkilendirmeyle korunuyor.",
+    body: {
+      tr: "Berber randevu ve personel yönetimi. Flutter istemcisi ve Node.js/Express REST API'si; müdür, çalışan ve admin rolleri.",
+      en: "Barber appointment and staff management. A Flutter client and a Node.js/Express REST API with manager, staff and admin roles.",
+    },
+    metric: {
+      tr: "Randevu, dükkan, servis, yorum ve favori akışlarının tamamı rol bazlı yetkilendirmeyle korunuyor.",
+      en: "Appointments, shops, services, reviews and favourites are all protected by role-based authorization.",
+    },
     stack: ["Flutter", "Dart", "Node.js", "Express"],
     href: "https://github.com/bahattinercan/barber_shops",
   },
   {
     title: "Döner Sipariş Sitesi",
-    kind: "Web · sıfır bağımlılık",
+    kind: { tr: "Web · sıfır bağımlılık", en: "Web · zero dependencies" },
     shot: "/work/doner-website.webp",
-    body: "Lokanta için statik sipariş sitesi: WhatsApp üzerinden sipariş, gece modu, localStorage sepet. Derleme adımı ve framework yok.",
-    metric:
-      "CSP/HSTS başlıklarıyla yayında; `vercel.json` kaynak desenindeki geçersiz `/**` düzeltildi.",
+    body: {
+      tr: "Lokanta için statik sipariş sitesi: WhatsApp üzerinden sipariş, gece modu, localStorage sepet. Derleme adımı ve framework yok.",
+      en: "A static ordering site for a restaurant: WhatsApp ordering, dark mode, localStorage cart. No build step, no framework.",
+    },
+    metric: {
+      tr: "Küçük işletme için bakım maliyeti sıfır: dosyayı kopyala, çalışır.",
+      en: "Zero maintenance cost for a small business: copy the file, it runs.",
+    },
     stack: ["HTML", "CSS", "JavaScript", "MIT"],
     href: "https://github.com/bahattinercan/doner-website",
     live: "https://doner-website.vercel.app",
   },
+  {
+    title: "Müşteri Sipariş Takip",
+    kind: { tr: "Masaüstü · çevrimdışı", en: "Desktop · offline" },
+    shot: "/work/siparis-takip.webp",
+    body: {
+      tr: "İmalat atölyesi için sipariş → üretim → tahsilat takibi. Windows masaüstü, tek bilgisayar, veriler yerel SQLite'ta.",
+      en: "Order → production → collection tracking for a manufacturing workshop. Windows desktop, single machine, data in local SQLite.",
+    },
+    metric: {
+      tr: "725 test · kullanıcı tanımlı üretim aşamaları · kısmi tahsilat · çevrimdışı doğrulanan lisans.",
+      en: "725 tests · user-defined production stages · partial payments · offline-verifiable licensing.",
+    },
+    stack: ["Flutter", "Dart", "SQLite", "Windows"],
+    href: "https://github.com/bahattinercan/case-studies/blob/main/docs/musteri-siparis-takip.md",
+  },
 ];
 
-export const caseStudies = [
+export const caseStudies: { name: string; note: L; href: string }[] = [
   {
     name: "Müşteri Sipariş Takip",
-    note: "Windows masaüstü, 725 test, çevrimdışı lisans/aktivasyon",
+    note: {
+      tr: "Windows masaüstü, 725 test, çevrimdışı lisans doğrulama",
+      en: "Windows desktop, 725 tests, offline licence verification",
+    },
     href: "https://github.com/bahattinercan/case-studies/blob/main/docs/musteri-siparis-takip.md",
   },
   {
     name: "Bakım Onarım Yönetimi (CMMS)",
-    note: "NestJS + Prisma + PostgreSQL, BullMQ outbox, OpenAPI sözleşme kapısı",
+    note: {
+      tr: "Katman sınırları otomatik denetleniyor, API sözleşme kayması CI'da yakalanıyor",
+      en: "Layer boundaries enforced automatically, API contract drift caught in CI",
+    },
     href: "https://github.com/bahattinercan/case-studies/blob/main/docs/bakim-onarim-yonetim.md",
   },
   {
     name: "JobRadar",
-    note: "7 kaynaktan ilan toplama, deterministik skorlama, 29 test",
+    note: {
+      tr: "7 kaynaktan ilan toplama, deterministik skorlama, 29 test",
+      en: "Ingests from 7 sources, deterministic scoring, 29 tests",
+    },
     href: "https://github.com/bahattinercan/case-studies/blob/main/docs/find-job.md",
   },
   {
     name: "Taskbar Hero",
-    note: "Saf Kotlin sabit adımlı simülasyon motoru, 101 JVM testi",
+    note: {
+      tr: "Saf Kotlin sabit adımlı simülasyon motoru, 101 JVM testi",
+      en: "Pure-Kotlin fixed-step simulation engine, 101 JVM tests",
+    },
     href: "https://github.com/bahattinercan/case-studies/blob/main/docs/new-taskbar-hero.md",
   },
 ];
 
-export const technologies = [
+/** Öz değerlendirme — ölçülmüş bir iddia değil, ağırlık göstergesi. */
+export const proficiency: { label: L; value: number }[] = [
   {
-    group: "Mobil ve masaüstü",
-    items: ["Flutter", "Dart", "Riverpod", "go_router", "Dio"],
+    label: { tr: "Backend ve API", en: "Backend & API" },
+    value: 90,
   },
   {
-    group: "Web",
-    items: ["TypeScript", "Next.js", "React", "Vite", "Tailwind CSS", "HTML", "CSS"],
+    label: { tr: "Veritabanı ve şema tasarımı", en: "Database & schema design" },
+    value: 85,
   },
   {
-    group: "Backend ve veri",
-    items: [
-      "Node.js",
-      "Express",
-      "NestJS",
-      "Prisma",
-      "Sequelize",
-      "PostgreSQL",
-      "SQLite",
-      "MongoDB",
-      "BullMQ",
-      "Drizzle ORM",
-    ],
+    label: { tr: "Mobil (Flutter)", en: "Mobile (Flutter)" },
+    value: 85,
   },
   {
-    group: "Oyun ve sistem",
-    items: ["C#", "Unity", "Kotlin", "Android", "C++", "Python"],
+    label: { tr: "Ödeme entegrasyonu", en: "Payment integration" },
+    value: 75,
   },
   {
-    group: "Araçlar",
-    items: ["Git", "GitHub Actions", "Docker", "Vercel", "Mocha", "Vitest", "dependency-cruiser"],
+    label: { tr: "Oyun geliştirme (Unity/C#)", en: "Game development (Unity/C#)" },
+    value: 70,
   },
 ];
 
-export const rules = [
+export const proficiencyNote: L = {
+  tr: "Öz değerlendirme — ölçülmüş bir gösterge değil, hangi alana ne kadar zaman ayırdığımı anlatıyor.",
+  en: "Self-assessment — not a measured metric, just where I have spent most of my time.",
+};
+
+export const technologies: { group: L; items: string[] }[] = [
   {
-    title: "Sessizce bozulabilecek mantığa test yazarım",
-    body: "Skorlama, sınıflandırma, üretim aşamaları, durum geçişleri, yetkilendirme. Bu mantık bozulduğunda uygulama çökmez — sadece yanlış sonuç verir. Teste ihtiyacı olan yer tam olarak burasıdır.",
+    group: { tr: "Backend", en: "Backend" },
+    items: ["Python", "Django", "Django REST Framework", "Node.js", "Express", "NestJS", "PHP"],
   },
   {
-    title: "Kararları kodun yanında yazarım",
-    body: "Hangi kısıtın kabul edildiği, neden o kütüphanenin seçildiği ve neyi yapmamaya karar verdiğim repo içinde durur. Sözlü aktarılan bilgi kaybolur.",
+    group: { tr: "Veri", en: "Data" },
+    items: ["PostgreSQL", "Sequelize", "Prisma", "SQLite", "MongoDB", "Firebase"],
   },
   {
-    title: "Geliştirme verisi ile gerçek veriyi ayırırım",
-    body: "Demo veri sentetiktir ve üretimde varsayılan şifreyle çalışmak reddedilir. \"Demo kullanıcıyla canlıya çıkmak\" hatası yapısal olarak imkânsız hâle gelir.",
+    group: { tr: "Mobil ve masaüstü", en: "Mobile & desktop" },
+    items: ["Flutter", "Dart", "React Native", "Android", "iOS"],
   },
   {
-    title: "Sınırları yazarım",
-    body: "Her projenin \"bilinen sınırlar\" bölümü var. Bitmemiş işi bitmiş gibi göstermek, teknik borcu gizlemenin en pahalı yoludur.",
+    group: { tr: "Web", en: "Web" },
+    items: ["TypeScript", "Next.js", "React", "Angular", "Vite", "Tailwind CSS"],
+  },
+  {
+    group: { tr: "Oyun ve sistem", en: "Game & systems" },
+    items: ["C#", "Unity", "Unreal Engine", "Kotlin", "C++", "Raspberry Pi", "Linux"],
+  },
+  {
+    group: { tr: "Araçlar", en: "Tools" },
+    items: ["Docker", "Git", "GitHub Actions", "Vercel"],
   },
 ];
+
+export const rules: { title: L; body: L }[] = [
+  {
+    title: {
+      tr: "Kritik mantığı teste bağlıyorum",
+      en: "I lock critical logic with tests",
+    },
+    body: {
+      tr: "Uygulamayı çökertmeyen ama yanlış sonuç üreten yerler: tahsilat hesabı, üretim aşaması geçişleri, yetkilendirme, skorlama. Müşteri Sipariş Takip'te 725, Güzellik Salonu'nda 535, Taskbar Hero'da 101 test.",
+      en: "The parts that do not crash the app but produce wrong answers: payment calculations, production stage transitions, authorization, scoring. 725 tests in order tracking, 535 in the salon platform, 101 in Taskbar Hero.",
+    },
+  },
+  {
+    title: {
+      tr: "Kararlar kodun yanında duruyor",
+      en: "Decisions live next to the code",
+    },
+    body: {
+      tr: "Her projede mimari, kısıtlar ve neyi yapmamaya karar verdiğim yazılı. Yeni gelen biri soru sormak zorunda kalmıyor; repoyu açan aynı sonuca varıyor.",
+      en: "Architecture, constraints and what I decided not to do are written down in every project. Nobody has to ask; anyone opening the repo reaches the same conclusion.",
+    },
+  },
+  {
+    title: {
+      tr: "Demo veri ile gerçek veri karışmıyor",
+      en: "Demo data never touches real data",
+    },
+    body: {
+      tr: "Geliştirme sentetik veriyle yapılıyor ve üretimde varsayılan şifreyle seed çalıştırmak kodla engelli — \"demo kullanıcıyla canlıya çıkmak\" hatası yapısal olarak imkânsız.",
+      en: "Development uses synthetic data, and seeding production with default passwords is blocked in code — so shipping with a demo user is structurally impossible.",
+    },
+  },
+];
+
+export const education: { school: string; degree: L; period: string; note?: L }[] = [
+  {
+    school: "Dumlupınar Üniversitesi",
+    degree: { tr: "Bilgisayar Mühendisliği, Lisans", en: "BSc Computer Engineering" },
+    period: "2019 – 2023",
+    note: { tr: "GNO 3.05 / 4.00", en: "GPA 3.05 / 4.00" },
+  },
+];
+
+export const certificates: { name: string; issuer: string; year: string }[] = [
+  {
+    name: "UML ve Nesne Yönelimli Tasarım Temelleri",
+    issuer: "Karoly Nyisztor",
+    year: "2023",
+  },
+  { name: "Unity ile Defans Oyunu", issuer: "Code Monkey", year: "2021" },
+  {
+    name: "Unreal Engine C++ Developer",
+    issuer: "Ben Tristem · GameDev.tv",
+    year: "2020",
+  },
+];
+
+export const languages: { name: L; level: L }[] = [
+  { name: { tr: "Türkçe", en: "Turkish" }, level: { tr: "Ana dil", en: "Native" } },
+  { name: { tr: "İngilizce", en: "English" }, level: { tr: "C1", en: "C1" } },
+];
+
+export const footerNote: L = {
+  tr: "Bu site Next.js ile yazıldı; harici görsel, font, izleme betiği ve rozet servisi yok.",
+  en: "This site is built with Next.js; no external images, fonts, analytics or badge services.",
+};
