@@ -202,8 +202,8 @@ export default function Portfolio() {
             </h2>
             <p className="note reveal">
               {lang === "tr"
-                ? "Dört hat: API ve backend, ödeme entegrasyonu, mobil/masaüstü ürünler ve veri altyapısı."
-                : "Four tracks: APIs and backend, payment integration, mobile/desktop products, and data infrastructure."}
+                ? "Dört hat: backend, web, mobil ve masaüstü uygulamaları, oyun."
+                : "Four tracks: backend, web, mobile and desktop apps, and games."}
             </p>
             <div className="grid-4">
               {pillars.map((p) => (

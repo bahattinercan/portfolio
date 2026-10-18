@@ -1,6 +1,6 @@
 # Portfolyo
 
-Kişisel portfolyo sitesi — Backend & Full Stack geliştirici olarak işlerim, deneyimim
+Kişisel portfolyo sitesi: Backend & Full Stack geliştirici olarak işlerim, deneyimim
 ve vaka çalışmalarım.
 
 **Canlı:** https://bahattinercan-portfolio.vercel.app
@@ -27,11 +27,11 @@ paylaşılabilir bir adres sağlar (LinkedIn, CV, başvuru formları).
 | | |
 |---|---|
 | Çerçeve | Next.js 16 (App Router), TypeScript |
-| Üretim | Tamamen statik — `next build` ile önceden üretilir |
+| Üretim | Tamamen statik, `next build` ile önceden üretilir |
 | Stil | Tek CSS dosyası; tüm renkler `app/globals.css` içindeki token'lardan |
-| İçerik | `content.ts` — tüm metin iki dilli (`{tr, en}`), bileşenlerden ayrı |
+| İçerik | `content.ts`: tüm metin iki dilli (`{tr, en}`), bileşenlerden ayrı |
 | Görseller | `public/work/` (webp, toplam ~290 KB) + elle yazılmış SVG hero şeması |
-| CV | `public/cv/` — iki dilde PDF, telefon numarası redakte edilmiş |
+| CV | `public/cv/`: iki dilli PDF (orijinal dosyalar) |
 
 **Harici bağımlılık yok:** sistem fontu kullanılır; rozet servisi, izleme betiği, CDN ve
 üçüncü parti görsel çağrısı yoktur.
@@ -61,7 +61,7 @@ Tüm metin `content.ts` içinde. Yeni bir proje eklemek için `work` dizisine bi
 `public/work/` altına 16:9 (1200×675) bir görsel eklemek yeterli; iki dilde metin
 verilmezse tip denetimi uyarır.
 
-CV dosyalarını güncellerken telefon numarasını **koymayın** — public bir adreste
+CV dosyalarını güncellerken telefon numarasını **koymayın**; public bir adreste
 duruyorlar.
 
 ## Erişilebilirlik ve başlıklar

@@ -57,8 +57,8 @@ export const hero = {
       en: "I have been writing code since 2019, with 4+ years of professional experience. I build REST APIs, JWT authentication and role-based authorization with Django and Django REST Framework; service layers with Node.js/Express; and cross-platform iOS/Android apps from a single Flutter codebase.",
     },
     {
-      tr: "Yazdığım sistemlerde iki yerde hata payı bırakmıyorum: veritabanı şeması ve para hareketi. Şema tasarımını ve migration'ları geri alınabilir adımlarla yönetiyorum; sanal POS, 3D Secure doğrulama, iade ve iptal akışlarını test ve kayıtla kilitliyorum. Raspberry Pi üzerinde çalışan IoT cihazları için de uzaktan kontrol ve otomasyon sistemleri kurdum.",
-      en: "There are two places in my systems where I leave no room for error: the database schema and money movement. I manage schema design and migrations as reversible steps, and I lock payment flows — virtual POS, 3D Secure verification, refunds and voids — with tests and logging. I have also built remote control and automation systems for IoT devices running on Raspberry Pi.",
+      tr: "Web tarafında React, Next.js ve Angular ile arayüz kuruyorum; oyun tarafında Unity ve C# ile hypercasual mobil oyunlar geliştirip yayınladım. Veritabanı şeması, migration'lar ve Docker ile dağıtım bu dört alanın ortak zemini.",
+      en: "On the web I build interfaces with React, Next.js and Angular, and on the game side I have developed and published hypercasual mobile games with Unity and C#. Database schema, migrations and Docker deployment are the shared foundation across all four areas.",
     },
   ] as L[],
 };
@@ -67,29 +67,29 @@ export const pillars: { title: L; body: L }[] = [
   {
     title: { tr: "Backend ve API", en: "Backend & API" },
     body: {
-      tr: "Django/DRF ile REST API, JWT kimlik doğrulama, rol bazlı yetkilendirme ve WebSocket ile gerçek zamanlı akış. Node.js/Express ile servis katmanları.",
-      en: "REST APIs with Django/DRF, JWT authentication, role-based authorization and real-time flows over WebSocket. Service layers with Node.js/Express.",
+      tr: "Django/DRF ile REST API, JWT kimlik doğrulama, rol bazlı yetkilendirme ve WebSocket ile gerçek zamanlı akış. Node.js/Express servis katmanları; PostgreSQL şema tasarımı ve migration'lar.",
+      en: "REST APIs with Django/DRF, JWT authentication, role-based authorization and real-time flows over WebSocket. Service layers with Node.js/Express; PostgreSQL schema design and migrations.",
     },
   },
   {
-    title: { tr: "Ödeme entegrasyonu", en: "Payment integration" },
+    title: { tr: "Web", en: "Web" },
     body: {
-      tr: "Sanal POS bağlantısı, 3D Secure doğrulama akışı, iade ve iptal işlemleri. Para hareketi olduğu için bu tarafta her adım kayıt altında ve testli.",
-      en: "Virtual POS integration, 3D Secure verification flow, refund and void handling. Because money moves here, every step is logged and tested.",
+      tr: "React, Next.js ve Angular ile arayüz. API entegrasyonu, responsive yerleşim, yönetim panelleri ve veri yoğun tablo ekranları.",
+      en: "Interfaces with React, Next.js and Angular. API integration, responsive layout, admin panels and data-heavy table screens.",
     },
   },
   {
     title: { tr: "Mobil ve masaüstü", en: "Mobile & desktop" },
     body: {
-      tr: "Flutter ile iOS ve Android yayınlama, Windows masaüstü uygulamaları, React Native. Kurulum, sürümleme ve yedekleme işin parçası.",
-      en: "iOS and Android publishing with Flutter, Windows desktop apps, React Native. Installation, versioning and backup are part of the job.",
+      tr: "Flutter ile tek kod tabanından iOS ve Android yayınlama, Windows masaüstü uygulamaları, React Native. Kurulum, sürümleme ve yedekleme işin parçası.",
+      en: "Single-codebase iOS and Android publishing with Flutter, Windows desktop apps, React Native. Installation, versioning and backup are part of the job.",
     },
   },
   {
-    title: { tr: "Veri ve altyapı", en: "Data & infrastructure" },
+    title: { tr: "Oyun", en: "Game" },
     body: {
-      tr: "PostgreSQL şema tasarımı, Sequelize model ve migration'ları, Docker ile taşınabilir dağıtım, Linux ve Raspberry Pi.",
-      en: "PostgreSQL schema design, Sequelize models and migrations, portable deployment with Docker, Linux and Raspberry Pi.",
+      tr: "Unity ve C# ile hypercasual mobil oyunlar. Level tasarımı, oyun mekaniği, kontrol ve fizik sistemleri; AdMob ve Unity Ads ile monetizasyon.",
+      en: "Hypercasual mobile games with Unity and C#. Level design, game mechanics, control and physics systems; monetisation with AdMob and Unity Ads.",
     },
   },
 ];
@@ -289,14 +289,14 @@ export const caseStudies: { name: string; note: L; href: string }[] = [
   },
 ];
 
-/** Öz değerlendirme — ölçülmüş bir iddia değil, ağırlık göstergesi. */
+/** Öz değerlendirme: ölçülmüş bir iddia değil, ağırlık göstergesi. */
 export const proficiency: { label: L; value: number }[] = [
   {
     label: { tr: "Backend ve API", en: "Backend & API" },
     value: 90,
   },
   {
-    label: { tr: "Veritabanı ve şema tasarımı", en: "Database & schema design" },
+    label: { tr: "Web arayüzü", en: "Web frontend" },
     value: 85,
   },
   {
@@ -304,18 +304,18 @@ export const proficiency: { label: L; value: number }[] = [
     value: 85,
   },
   {
-    label: { tr: "Ödeme entegrasyonu", en: "Payment integration" },
-    value: 75,
+    label: { tr: "Veritabanı ve şema tasarımı", en: "Database & schema design" },
+    value: 80,
   },
   {
     label: { tr: "Oyun geliştirme (Unity/C#)", en: "Game development (Unity/C#)" },
-    value: 70,
+    value: 75,
   },
 ];
 
 export const proficiencyNote: L = {
-  tr: "Öz değerlendirme — ölçülmüş bir gösterge değil, hangi alana ne kadar zaman ayırdığımı anlatıyor.",
-  en: "Self-assessment — not a measured metric, just where I have spent most of my time.",
+  tr: "Öz değerlendirme: ölçülmüş bir gösterge değil, hangi alana ne kadar zaman ayırdığımı anlatıyor.",
+  en: "Self-assessment: not a measured metric, just where I have spent most of my time.",
 };
 
 export const technologies: { group: L; items: string[] }[] = [
@@ -372,8 +372,8 @@ export const rules: { title: L; body: L }[] = [
       en: "Demo data never touches real data",
     },
     body: {
-      tr: "Geliştirme sentetik veriyle yapılıyor ve üretimde varsayılan şifreyle seed çalıştırmak kodla engelli — \"demo kullanıcıyla canlıya çıkmak\" hatası yapısal olarak imkânsız.",
-      en: "Development uses synthetic data, and seeding production with default passwords is blocked in code — so shipping with a demo user is structurally impossible.",
+      tr: "Geliştirme sentetik veriyle yapılıyor ve üretimde varsayılan şifreyle seed çalıştırmak kodla engelli; \"demo kullanıcıyla canlıya çıkmak\" hatası yapısal olarak imkânsız.",
+      en: "Development uses synthetic data, and seeding production with default passwords is blocked in code, so shipping with a demo user is structurally impossible.",
     },
   },
 ];
