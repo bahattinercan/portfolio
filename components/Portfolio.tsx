@@ -63,12 +63,22 @@ const Icon = {
 export default function Portfolio() {
   const [lang, setLang] = useState<Lang>("tr");
   const [theme, setTheme] = useState<Theme>("dark");
+  const [ready, setReady] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
-  // Kayıtlı tercihleri oku (yoksa sistem teması)
+  // Dil: kayıtlı tercih yoksa tarayıcı diline bak (Türkçe değilse EN).
+  // Kararı head'deki bootstrap betiği verip <html lang> içine yazıyor.
   useEffect(() => {
     const storedLang = localStorage.getItem("pf-lang");
-    if (storedLang === "tr" || storedLang === "en") setLang(storedLang);
+    const resolved: Lang =
+      storedLang === "tr" || storedLang === "en"
+        ? storedLang
+        : document.documentElement.lang === "en"
+          ? "en"
+          : "tr";
+    setLang(resolved);
+    setReady(true);
+
     const storedTheme = localStorage.getItem("pf-theme");
     if (storedTheme === "dark" || storedTheme === "light") setTheme(storedTheme);
     else if (window.matchMedia("(prefers-color-scheme: light)").matches) setTheme("light");
@@ -79,10 +89,23 @@ export default function Portfolio() {
     localStorage.setItem("pf-theme", theme);
   }, [theme]);
 
+  // Dili uyguladıktan sonra, EN içerik boyanmadan gizlemeyi kaldırma.
   useEffect(() => {
+    if (!ready) return;
     document.documentElement.lang = lang;
-    localStorage.setItem("pf-lang", lang);
-  }, [lang]);
+    const id = requestAnimationFrame(() =>
+      document.documentElement.removeAttribute("data-lang-pending"),
+    );
+    return () => cancelAnimationFrame(id);
+  }, [ready, lang]);
+
+  // Dil yalnızca kullanıcı düğmeye bastığında kalıcı tercih olarak yazılır;
+  // otomatik seçim kaydedilirse tarayıcı dili değişince sayfa takılı kalır.
+  function toggleLang() {
+    const next: Lang = lang === "tr" ? "en" : "tr";
+    localStorage.setItem("pf-lang", next);
+    setLang(next);
+  }
 
   // Kaydırınca giriş animasyonu: 0 bağımlılık, IntersectionObserver
   useEffect(() => {
@@ -129,7 +152,7 @@ export default function Portfolio() {
           <div className="toggles">
             <button
               className="tgl"
-              onClick={() => setLang(lang === "tr" ? "en" : "tr")}
+              onClick={toggleLang}
               aria-label={`${t(lang, ui.labels.language)}: ${lang.toUpperCase()}`}
               title={t(lang, ui.labels.language)}
             >

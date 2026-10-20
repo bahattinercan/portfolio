@@ -55,13 +55,22 @@ export const viewport: Viewport = {
   ],
 };
 
-/* Tema ve dil tercihini ilk boyamadan önce uygula (ekran titremesini önler). */
+/* Tema ve dil tercihini ilk boyamadan önce uygula (ekran titremesini önler).
+ * Dil sırası: kayıtlı tercih > tarayıcı dili (Türkçe ise TR, değilse EN).
+ * Sunucu HTML'i her zaman TR üretildiği için, sonuç EN ise içerik React
+ * devralana kadar gizlenir; böylece ziyaretçi önce yanlış dilde metin görmez. */
 const bootstrap = `(function(){try{
 var th=localStorage.getItem('pf-theme');
 if(th!=='dark'&&th!=='light'){th=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
 document.documentElement.dataset.theme=th;
 var lg=localStorage.getItem('pf-lang');
-if(lg==='tr'||lg==='en'){document.documentElement.lang=lg;}
+if(lg!=='tr'&&lg!=='en'){
+var nav=(navigator.languages&&navigator.languages[0])||navigator.language||'en';
+lg=/^tr/i.test(nav)?'tr':'en';
+}
+if(lg==='en'){document.documentElement.setAttribute('data-lang-pending','');
+setTimeout(function(){document.documentElement.removeAttribute('data-lang-pending');},2500);}
+document.documentElement.lang=lg;
 }catch(e){document.documentElement.dataset.theme='dark';}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
