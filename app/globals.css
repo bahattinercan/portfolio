@@ -378,23 +378,52 @@ section {
   font-size: 14.6px;
 }
 
-/* ---------- nasıl çalışıyorum: düz yazı ---------- */
+/* ---------- nasıl çalışıyorum: konu başlıklı düz yazı ---------- */
 .howto {
-  max-width: 68ch;
-  margin-top: 26px;
+  display: grid;
+  grid-template-columns: minmax(0, 190px) minmax(0, 1fr);
+  gap: 0 44px;
+  max-width: 880px;
+  margin-top: 30px;
 }
 
-.howto p {
-  margin: 0 0 20px;
-  font-size: 16.6px;
-  line-height: 1.8;
+.howto-item {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+
+.howto-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.howto-item h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
   color: var(--text);
-  opacity: 0.88;
+}
+
+.howto-item p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
   text-wrap: pretty;
 }
 
-.howto p:last-child {
-  margin-bottom: 0;
+@media (max-width: 760px) {
+  .howto {
+    grid-template-columns: 1fr;
+  }
+  .howto-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }
 
 /* ---------------- deneyim ---------------- */

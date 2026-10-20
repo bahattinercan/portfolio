@@ -346,23 +346,69 @@ export const technologies: { group: L; items: string[] }[] = [
 ];
 
 /**
- * "Nasıl çalışıyorum" bölümü bilinçli olarak düz yazı, madde listesi değil.
- * Önceki hâli üç paralel slogan cümlesiydi ("X değil Y yazıyorum", "X değil
- * repoda bırakıyorum") ve kart başlığı olarak duruyordu; kulağa broşür gibi
- * geliyordu. İnsanlar böyle anlatmıyor, hikâye gibi anlatıyor.
+ * "Nasıl çalışıyorum" bölümü: alan alan konu başlığı + düz yazı.
+ * Başlıklar slogan değil, konu etiketi ("Testler", "Veri modeli").
+ * Önceki sürüm üç paralel karşıtlık cümlesiydi ("X değil Y yazıyorum");
+ * arka arkaya üç tanesi broşür gibi okunuyordu.
  */
-export const howIWork: { tr: string[]; en: string[] } = {
-  tr: [
-    "Testleri genelde ilk akla gelen yerden başlatmıyorum. Çöken ekran kendini belli ediyor, çoğu zaman aynı gün düzeltiliyor. Beni asıl korkutan, hiçbir yerde hata vermeden yanlış sonuç üreten kod: yanlış hesaplanmış bir tahsilat, atlanmış bir üretim aşaması, açık kalmış bir yetki. Müşteri Sipariş Takip'te 725, Güzellik Salonu'nda 535, Taskbar Hero'da 101 testin çoğu bu yüzden var.",
-    "Kararları kafamda tutmuyorum, repoda bırakıyorum. Bir şeyi neden öyle yaptığımı altı ay sonra kendim de hatırlamıyorum, o yüzden README'ye ya da kodun yanına yazıyorum. Neyi yapmamaya karar verdiğimi de yazıyorum; yoksa aynı tartışma her ay baştan başlıyor.",
-    "Demo verisiyle canlıya çıkma ihtimalini sevmiyorum. Geliştirmede uydurma veri kullanıyorum, üretimde varsayılan şifreyle seed çalıştırmayı kodla kapatıyorum. Kuralı yazmak yetmiyor, çünkü kuralı okuyacak kişi de o gün acele eden kişi oluyor.",
-  ],
-  en: [
-    "I do not start tests where most people start them. A crashed screen announces itself and usually gets fixed the same day. What worries me is code that never throws but returns the wrong answer: a miscalculated payment, a skipped production stage, a permission left open. Most of the 725 tests in order tracking, 535 in the salon platform and 101 in Taskbar Hero exist for that reason.",
-    "I do not keep decisions in my head, I leave them in the repo. Six months later I will not remember why I did something either, so it goes into the README or next to the code. I also write down what I decided not to do, otherwise the same argument restarts every month.",
-    "I do not like the idea of demo data reaching production. Development runs on fake data, and seeding production with the default password is closed off in code. Writing the rule down is not enough, because the person reading the rule is also the person in a hurry that day.",
-  ],
-};
+export const howIWork: { label: L; body: L }[] = [
+  {
+    label: { tr: "Testler", en: "Tests" },
+    body: {
+      tr: "Testleri genelde ilk akla gelen yerden başlatmıyorum. Çöken ekran kendini belli ediyor, çoğu zaman aynı gün düzeltiliyor; asıl mesele hiçbir yerde hata vermeden yanlış sonuç üreten kod. Müşteri Sipariş Takip'te 725 testin çoğu bu yüzden var: kısmi tahsilat, bakiye, üretim aşaması geçişleri. Güzellik Salonu'nda 535, Taskbar Hero'da 101, bakım-onarım sisteminde 68 test dosyası. Test sayısını kendi başına bir başarı olarak görmüyorum; işe yaradığı yer, bir şeyi değiştirirken korkmamam.",
+      en: "I do not start tests where most people start them. A crashed screen announces itself and usually gets fixed the same day; the real problem is code that never throws but returns the wrong answer. That is why most of the 725 tests in order tracking exist: partial payments, balances, production stage transitions. 535 in the salon platform, 101 in Taskbar Hero, 68 test files in the maintenance system. I do not treat a test count as an achievement in itself; what it buys me is not being afraid when I change something.",
+    },
+  },
+  {
+    label: { tr: "Veri modeli", en: "Data model" },
+    body: {
+      tr: "Bir projeye başlarken önce ekranı değil veriyi düşünüyorum, çünkü veri modeli koddan uzun yaşıyor. Müşteri Sipariş Takip'te \"ödendi mi\" sorusunun cevabı siparişteki bir alan değil: ödeme tahsilata bağlı, bakiye türetilmiş bir değer. Siparişe tek bir \"ödendi\" alanı koymak daha kolay olurdu ama üç parçalı tahsilatta o alan yalan söylüyor. Çok kiracılı sistemlerde kiracı kimliği sessiz bir varsayım değil, modüller arası çağrıda zorunlu parametre.",
+      en: "When I start a project I think about the data before the screen, because the data model outlives the code. In order tracking, the answer to \"is it paid\" is not a field on the order: the payment hangs off the collection and the balance is a derived value. A single \"paid\" flag would have been easier, but with three-part payments that flag lies. In multi-tenant systems the tenant id is not a silent assumption; it is a required parameter on every cross-module call.",
+    },
+  },
+  {
+    label: { tr: "Backend ve API", en: "Backend and API" },
+    body: {
+      tr: "İş kurallarını HTTP'ye bağlamıyorum. Bakım-onarım sisteminde her modül application / domain / infrastructure diye ayrılmış durumda ve domain katmanı saf TypeScript: Nest, Prisma, HTTP import etmiyor. Aynı servis hem API'den hem kuyruk tüketicisinden çağrılıyor. Bu katman kurallarını dependency-cruiser denetliyor, yani kural dokümanda kalıp çürümüyor. Modülün dışa açık yüzeyi tek bir index dosyası; başka modülün repository'sine veya tablosuna doğrudan yazmıyorum. İstemci tarafını elle yazmıyorum: API'nin OpenAPI çıktısından üretiliyor, böylece alan adı değiştiğinde istemci sessizce eskimesin.",
+      en: "I do not tie business rules to HTTP. In the maintenance system every module is split into application / domain / infrastructure, and the domain layer is plain TypeScript: no Nest, no Prisma, no HTTP imports. The same service is called from the API and from the queue consumer. Those layer rules are checked by dependency-cruiser, so the rule does not rot in a document. A module exposes exactly one index file; I do not write directly into another module's repository or table. I do not hand-write the client: it is generated from the API's OpenAPI output, so a renamed field cannot leave the client quietly stale.",
+    },
+  },
+  {
+    label: { tr: "Arayüz", en: "Interface" },
+    body: {
+      tr: "Web'de React, Next.js ve Angular, mobilde Flutter kullanıyorum; kararlar aynı kalıyor. Boş hâl, yükleniyor hâli ve hata hâli sonradan eklenen şeyler değil, ekranın parçası. Responsive'i işin sonunda düzeltmiyorum, ilk günden 360 px'te bozulmayacak şekilde kuruyorum. Flutter'da tek kod tabanından iOS ve Android çıkıyor; platforma özel davranan yeri ayırıyorum, geri kalanı ortak kalıyor.",
+      en: "React, Next.js and Angular on the web, Flutter on mobile; the decisions stay the same. Empty, loading and error states are part of the screen, not something bolted on later. I do not fix responsiveness at the end; I build it so it does not break at 360 px from day one. Flutter gives me iOS and Android from one codebase; I separate the parts that behave platform-specifically and keep the rest shared.",
+    },
+  },
+  {
+    label: { tr: "Oyun", en: "Games" },
+    body: {
+      tr: "Oyun tarafında ölçülebilirlik bana görselden önce geliyor. Taskbar Hero'da savaş motoru saf Kotlin ve arayüzden tamamen ayrı, simülasyon sabit adımlı. Aynı seed aynı sonucu verdiği için bir denge değişikliğini tahminle değil JVM testiyle karşılaştırıyorum; cihaz ya da emülatör açmam gerekmiyor. Unity tarafında hypercasual oyunlarda level, mekanik, fizik ve kontrol sistemleri üzerinde çalıştım; 23 prototip unity-prototypes-archive içinde duruyor.",
+      en: "On the game side, measurability comes before visuals for me. In Taskbar Hero the combat engine is pure Kotlin, fully separate from the UI, and the simulation is fixed-step. The same seed produces the same result, so I compare a balance change with a JVM test instead of a guess, without opening a device or emulator. On Unity I worked on levels, mechanics, physics and control systems in hypercasual games; 23 prototypes are in unity-prototypes-archive.",
+    },
+  },
+  {
+    label: { tr: "Kararlar ve dokümantasyon", en: "Decisions and documentation" },
+    body: {
+      tr: "Kararları kafamda tutmuyorum, repoda bırakıyorum; bir şeyi neden öyle yaptığımı altı ay sonra kendim de hatırlamıyorum. Neyi yapmamaya karar verdiğimi de yazıyorum, çünkü asıl tartışma \"bunu neden yapmadın\" sorusunda çıkıyor ve cevabı yazmazsam her ay baştan tartışılıyor. README'ler mimariyi övmüyor, sınırları anlatıyor: ne nerede duruyor, neyin oraya girmemesi gerekiyor.",
+      en: "I do not keep decisions in my head, I leave them in the repo; six months later I will not remember why I did something either. I also write down what I decided not to do, because the real argument starts with \"why did you not build this\" and without a written answer it restarts every month. READMEs do not praise the architecture, they describe the boundaries: what lives where, and what must not move in.",
+    },
+  },
+  {
+    label: { tr: "Dağıtım ve ortam", en: "Deployment and environments" },
+    body: {
+      tr: "Geliştirme, test ve üretim birbirinden ayrı. Üretimde varsayılan şifreyle seed çalıştırmayı kodla kapatıyorum; kuralı yazmak yetmiyor, çünkü kuralı okuyacak kişi de o gün acele eden kişi oluyor. Dağıtımda Docker kullanıyorum, migration'ı dağıtımın parçası sayıyorum ve sırları repoya koymuyorum. Testler ve tip kontrolü geçmeden birleştirme yapmıyorum.",
+      en: "Development, test and production are separate. Seeding production with the default password is closed off in code; writing the rule down is not enough, because the person reading the rule is also the person in a hurry that day. I use Docker for deployment, treat migrations as part of the deploy and keep secrets out of the repo. Nothing gets merged before tests and type checks pass.",
+    },
+  },
+  {
+    label: { tr: "Çalışma biçimi", en: "How I work with people" },
+    body: {
+      tr: "Büyük bir teslimle gelmek yerine uçtan uca çalışan küçük bir dilimle başlıyorum, sonra üstüne ekliyorum. Emin olmadığım yerde soruyorum; özellikle kapsam ve öncelik konusunda tahmin yürütmek sonra daha pahalıya patlıyor. Bir şeyi yapmamayı önerdiysem sebebini de söylüyorum, sadece \"olmaz\" demiyorum.",
+      en: "Instead of arriving with one big delivery I start with a small slice that works end to end, then build on it. When I am unsure I ask; guessing at scope and priority especially tends to cost more later. If I suggest not building something, I give the reason rather than just saying no.",
+    },
+  },
+];
 
 export const education: { school: string; degree: L; period: string; note?: L }[] = [
   {

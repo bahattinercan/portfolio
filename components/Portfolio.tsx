@@ -407,8 +407,11 @@ export default function Portfolio() {
               {lang === "tr" ? "Nasıl çalışıyorum" : "How I work"}
             </h2>
             <div className="howto reveal">
-              {howIWork[lang].map((p) => (
-                <p key={p.slice(0, 24)}>{p}</p>
+              {howIWork.map((item) => (
+                <div className="howto-item" key={item.label.tr}>
+                  <h3>{t(lang, item.label)}</h3>
+                  <p>{t(lang, item.body)}</p>
+                </div>
               ))}
             </div>
           </div>
