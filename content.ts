@@ -402,7 +402,14 @@ export const howIWork: { label: L; body: L }[] = [
     },
   },
   {
-    label: { tr: "Çalışma biçimi", en: "How I work with people" },
+    label: { tr: "Ekip içi çalışma", en: "Working in a team" },
+    body: {
+      tr: "Ekipte en çok işe yarayan şeyin kod yazma hızı değil devredilebilirlik olduğunu düşünüyorum; bir işi bitirdiğimde sorduğum soru \"çalışıyor mu\" değil, \"ben yokken de yürür mü\". İncelemeye küçük ve tek amaçlı değişiklikler gönderiyorum, çünkü içinde iki ayrı iş olan bir PR okunmuyor ve geri alınması gerektiğinde ikisini birden götürüyor. Yorumu koda yazıyorum, kişiye değil; \"bunu neden böyle yaptın\" yerine \"şu durumda ne oluyor\" diye soruyorum, çünkü ikincisi cevap alıyor. Stil tartışmasını otomatiğe bağlıyorum: biçimlendirici, linter, tip kontrolü ve testler CI'da çalışıyorsa tartışılacak bir şey kalmıyor. Katılmadığım bir karar verildiğinde gerekçemi bir kez söyleyip uyguluyorum, itirazı da yazıya geçiriyorum; sözlü kalan itiraz üç ay sonra \"ben demiştim\"e dönüşüyor ve kimseye faydası olmuyor. Yeni gelen birine düzeltmeyi göstermekle kalmayıp nedenini de söylüyorum, bir sonraki benzer durumda sormak zorunda kalmasın diye.",
+      en: "What helps most in a team is not how fast you write code but whether the work can be handed over; when I finish something the question I ask is not \"does it run\" but \"does it run without me\". I send small, single-purpose changes for review, because a PR holding two jobs does not get read and takes both down when it has to be reverted. I put the comment on the code, not the person: \"what happens in this case\" gets an answer, \"why did you do it like that\" does not. I automate style arguments: with a formatter, a linter, type checks and tests running in CI there is nothing left to debate. When a decision I disagreed with is made, I state my reason once and then build it, and I write the objection down; a verbal objection turns into \"I told you so\" three months later and helps nobody. When I explain something to someone new I do not just show the fix, I say why, so the next similar case does not need a question.",
+    },
+  },
+  {
+    label: { tr: "İş akışı ve kapsam", en: "Delivery and scope" },
     body: {
       tr: "Büyük bir teslimle gelmek yerine uçtan uca çalışan küçük bir dilimle başlıyorum, sonra üstüne ekliyorum. Emin olmadığım yerde soruyorum; özellikle kapsam ve öncelik konusunda tahmin yürütmek sonra daha pahalıya patlıyor. Bir şeyi yapmamayı önerdiysem sebebini de söylüyorum, sadece \"olmaz\" demiyorum.",
       en: "Instead of arriving with one big delivery I start with a small slice that works end to end, then build on it. When I am unsure I ask; guessing at scope and priority especially tends to cost more later. If I suggest not building something, I give the reason rather than just saying no.",
