@@ -17,7 +17,7 @@ import {
   proficiency,
   proficiencyNote,
   technologies,
-  rules,
+  howIWork,
   education,
   certificates,
   languages,
@@ -406,17 +406,9 @@ export default function Portfolio() {
             <h2 className="h2 reveal">
               {lang === "tr" ? "Nasıl çalışıyorum" : "How I work"}
             </h2>
-            <p className="note reveal">
-              {lang === "tr"
-                ? "Üç karar, her projede tekrar ediyor."
-                : "Three decisions that repeat in every project."}
-            </p>
-            <div className="grid-4">
-              {rules.map((r) => (
-                <div className="card reveal" key={r.title.tr}>
-                  <h3>{t(lang, r.title)}</h3>
-                  <p>{t(lang, r.body)}</p>
-                </div>
+            <div className="howto reveal">
+              {howIWork[lang].map((p) => (
+                <p key={p.slice(0, 24)}>{p}</p>
               ))}
             </div>
           </div>

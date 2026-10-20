@@ -345,38 +345,24 @@ export const technologies: { group: L; items: string[] }[] = [
   },
 ];
 
-export const rules: { title: L; body: L }[] = [
-  {
-    title: {
-      tr: "Testi çöken yere değil, sessizce yanlış yapan yere yazıyorum",
-      en: "I write tests where code fails silently, not where it crashes",
-    },
-    body: {
-      tr: "Uygulama ayakta kalır ama sonuç yanlış olur: tahsilat hesabı, üretim aşaması geçişleri, yetkilendirme, skorlama. Teste öncelik verdiğim yer tam olarak burası. Müşteri Sipariş Takip'te 725, Güzellik Salonu'nda 535, Taskbar Hero'da 101 test.",
-      en: "The app stays up but the answer is wrong: payment calculations, production stage transitions, authorization, scoring. That is exactly where I put the tests. 725 in order tracking, 535 in the salon platform, 101 in Taskbar Hero.",
-    },
-  },
-  {
-    title: {
-      tr: "Kararları kafamda değil repoda bırakıyorum",
-      en: "I leave decisions in the repo, not in my head",
-    },
-    body: {
-      tr: "Mimari, kısıtlar ve neyi yapmamaya karar verdiğim yazılı. İşi devralan kişi soru sormak zorunda kalmıyor; repoyu açan aynı sonuca varıyor.",
-      en: "Architecture, constraints and what I decided not to do are written down. Whoever takes over does not have to ask; anyone opening the repo reaches the same conclusion.",
-    },
-  },
-  {
-    title: {
-      tr: "Uydurma veri canlıya çıkamıyor",
-      en: "Synthetic data cannot reach production",
-    },
-    body: {
-      tr: "Geliştirme sentetik veriyle yapılıyor, üretimde varsayılan şifreyle seed çalıştırmak kodla engelli. Kuralı yazmakla kalmıyorum, koda gömüyorum.",
-      en: "Development runs on fake data, and seeding production with the default password is blocked in code. I do not just write the rule down, I put it in the code.",
-    },
-  },
-];
+/**
+ * "Nasıl çalışıyorum" bölümü bilinçli olarak düz yazı, madde listesi değil.
+ * Önceki hâli üç paralel slogan cümlesiydi ("X değil Y yazıyorum", "X değil
+ * repoda bırakıyorum") ve kart başlığı olarak duruyordu; kulağa broşür gibi
+ * geliyordu. İnsanlar böyle anlatmıyor, hikâye gibi anlatıyor.
+ */
+export const howIWork: { tr: string[]; en: string[] } = {
+  tr: [
+    "Testleri genelde ilk akla gelen yerden başlatmıyorum. Çöken ekran kendini belli ediyor, çoğu zaman aynı gün düzeltiliyor. Beni asıl korkutan, hiçbir yerde hata vermeden yanlış sonuç üreten kod: yanlış hesaplanmış bir tahsilat, atlanmış bir üretim aşaması, açık kalmış bir yetki. Müşteri Sipariş Takip'te 725, Güzellik Salonu'nda 535, Taskbar Hero'da 101 testin çoğu bu yüzden var.",
+    "Kararları kafamda tutmuyorum, repoda bırakıyorum. Bir şeyi neden öyle yaptığımı altı ay sonra kendim de hatırlamıyorum, o yüzden README'ye ya da kodun yanına yazıyorum. Neyi yapmamaya karar verdiğimi de yazıyorum; yoksa aynı tartışma her ay baştan başlıyor.",
+    "Demo verisiyle canlıya çıkma ihtimalini sevmiyorum. Geliştirmede uydurma veri kullanıyorum, üretimde varsayılan şifreyle seed çalıştırmayı kodla kapatıyorum. Kuralı yazmak yetmiyor, çünkü kuralı okuyacak kişi de o gün acele eden kişi oluyor.",
+  ],
+  en: [
+    "I do not start tests where most people start them. A crashed screen announces itself and usually gets fixed the same day. What worries me is code that never throws but returns the wrong answer: a miscalculated payment, a skipped production stage, a permission left open. Most of the 725 tests in order tracking, 535 in the salon platform and 101 in Taskbar Hero exist for that reason.",
+    "I do not keep decisions in my head, I leave them in the repo. Six months later I will not remember why I did something either, so it goes into the README or next to the code. I also write down what I decided not to do, otherwise the same argument restarts every month.",
+    "I do not like the idea of demo data reaching production. Development runs on fake data, and seeding production with the default password is closed off in code. Writing the rule down is not enough, because the person reading the rule is also the person in a hurry that day.",
+  ],
+};
 
 export const education: { school: string; degree: L; period: string; note?: L }[] = [
   {

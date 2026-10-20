@@ -378,6 +378,25 @@ section {
   font-size: 14.6px;
 }
 
+/* ---------- nasıl çalışıyorum: düz yazı ---------- */
+.howto {
+  max-width: 68ch;
+  margin-top: 26px;
+}
+
+.howto p {
+  margin: 0 0 20px;
+  font-size: 16.6px;
+  line-height: 1.8;
+  color: var(--text);
+  opacity: 0.88;
+  text-wrap: pretty;
+}
+
+.howto p:last-child {
+  margin-bottom: 0;
+}
+
 /* ---------------- deneyim ---------------- */
 .timeline {
   position: relative;
